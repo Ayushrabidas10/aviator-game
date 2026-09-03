@@ -1,12 +1,9 @@
-FROM php:8.2-apache
+FROM php:8.2-cli
 
-RUN docker-php-ext-install pdo pdo_mysql mysqli
+RUN apt-get update && apt-get install -y libpng-dev libzip-dev \
+    && docker-php-ext-install pdo pdo_mysql mysqli
 
-COPY . /var/www/html/
+WORKDIR /app
+COPY . /app
 
-RUN sed -i 's/Listen 80/Listen ${PORT:-80}/' /etc/apache2/ports.conf \
-    && sed -i 's/:80/:${PORT:-80}/' /etc/apache2/sites-available/000-default.conf \
-    && a2enmod rewrite \
-    && chown -R www-data:www-data /var/www/html
-
-CMD ["apache2-foreground"]
+CMD php -S 0.0.0.0:${PORT:-8080} index.php
