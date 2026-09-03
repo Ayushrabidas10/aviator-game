@@ -87,7 +87,7 @@ if($emailvalue==$aa)
            // $res = $randomresult[rand(0,8)];
             // if (session()->has('result')) {
             //     return session()->get('result');
-            // }
+            } // end
             // $r->session()->put('result',$res);
            // return $res;
            $res = $emailvalue;
@@ -100,7 +100,7 @@ if($emailvalue==100)
            $res = $randomresult[rand(0,8)];
             // if (session()->has('result')) {
             //     return session()->get('result');
-            // }
+            } // end
             // $r->session()->put('result',$res);
            // return $res;
          //  $res = $emailvalue;
@@ -109,11 +109,11 @@ if($emailvalue==100)
 // else{
 // {
 
-//     $res = $emailvalue;
-// }
+    $res = $emailvalue;
+}
  // $res =$emailvalue;
             
-//           //  $gamestatusdataend = Setting::where('category', 'game_between_time_end')->first();
+          //  $gamestatusdataend = Setting::where('category', 'game_between_time_end')->first();
        //   $res =  $randomresult[rand(0,2)]; //$emailvalue; 
             
         }
@@ -124,24 +124,24 @@ if($emailvalue==100)
         return response()->json($response);
         }
     }
-    // public function increamentor(Request $r)
-    // {
-    //     // return 1.7;
-    //     $totalbet = Userbit::where('gameid',currentid())->count();
-    //     $totalamount = Userbit::where('gameid',currentid())->sum('amount');
-    //     if ($totalbet == 0) {
-    //         return rand(8,11);
-    //     }else{
-    //         $randomresult = array(1.1,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9);
-    //         $res = $randomresult[rand(0,8)];
-    //         if (session()->has('result')) {
-    //             return session()->get('result');
-    //         }
-    //         $r->session()->put('result',$res);
-    //         return $res;
-    //     }
-    //     return rand(setting('start_range_game_timer')*10, setting('end_range_game_timer')*10) / 10;
-    // }
+    public function increament(Request $r)
+{
+// return 1.7;
+$totalbet = Userbit::where('gameid',currentid())->count();
+$totalamount = Userbit::where('gameid',currentid())->sum('amount');
+if ($totalbet == 0) {
+return rand(8,11);
+}else{
+$randomresult = array(1.1,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9);
+$res = $randomresult[rand(0,8)];
+if (session()->has('result')) {
+return session()->get('result');
+}
+$r->session()->put('result',$res);
+return $res;
+}
+return rand(setting('start_range_game_timer')*10, setting('end_range_game_timer')*10) / 10;
+    } // end
     
     public function game_over(Request $r)
     {
