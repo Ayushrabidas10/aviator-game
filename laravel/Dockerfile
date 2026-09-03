@@ -6,4 +6,4 @@ RUN apt-get update && apt-get install -y libpng-dev libzip-dev \
 WORKDIR /app
 COPY . /app
 
-CMD php -S 0.0.0.0:${PORT:-8080} index.php
+CMD ["/app/start.sh"]
