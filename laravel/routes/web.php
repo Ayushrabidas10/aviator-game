@@ -104,12 +104,12 @@ Route::group(['middleware' => ['isUser']], function () {
     Route::post('/user/withdrawal_list', [Userdetail::class, "withdrawal_list"]);
     Route::post('/game/existence', [Gamesetting::class, "game_existence"]);
     Route::post('/game/crash_plane', [Gamesetting::class, "crash_plane"]);
-    Route::post('/game/new_game_generated', [Gamesetting::class, "new_game_generated"]);
-    Route::post('/game/increament', [Gamesetting::class, "increamentor"]);
+    Route::any('/game/new_game_generated', [Gamesetting::class, "new_game_generated"]);
+    Route::any('/game/increament', [Gamesetting::class, "increamentor"]);
     Route::post('/game/game_over', [Gamesetting::class, "game_over"]);
     Route::post('/game/add_bet', [Gamesetting::class, "betNow"]);
 	Route::get('/cash_out', [Gamesetting::class, "cashout"]);
-    Route::post('/game/currentlybet', [Gamesetting::class, "currentlybet"]);
+    Route::any('/game/currentlybet', [Gamesetting::class, "currentlybet"]);
     Route::post('/game/my_bets_history', [Gamesetting::class, "my_bets_history"]);
     Route::get('/payment_gateway_details', [Adminapi::class, "payment_gateway"]);
     Route::post('/insert/withdrawal', [Adminapi::class, "withdrawal_query"]);
